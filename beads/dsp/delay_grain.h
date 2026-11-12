@@ -31,6 +31,8 @@
 
 #include "stmlib/stmlib.h"
 
+#include <cstdlib>
+
 #include "stmlib/dsp/dsp.h"
 #include "stmlib/utils/random.h"
 
@@ -186,7 +188,7 @@ class DelayGrain : public Grain {
         break;
     }
     
-    const int32_t d = abs(delay_ >= tail / 2 ? delay_ - tail : delay_);
+    const int32_t d = std::abs(delay_ >= tail / 2 ? delay_ - tail : delay_);
     const float fade_ramp = d < fade_zone ? float(d) / float(fade_zone) : 1.0f;
 
     int32_t delay_integral = delay_ >> 10;
